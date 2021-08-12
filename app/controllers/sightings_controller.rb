@@ -15,11 +15,11 @@ class SightingsController < ApplicationController
     end
 
     def create 
-        sighting = Animal.create(animal_params)
-        if animal.valid?
-            render json: animal
+        sighting = Sighting.create(sighting_params)
+        if sighting.valid?
+            render json: sighting
         else
-            render json: animal.errors
+            render json: sighting.errors
         end
     end
 
