@@ -24,8 +24,13 @@ class AnimalsController < ApplicationController
     end
 
     def destroy 
-        animal = Animal.find(animal_params[:id])
-        animal.destroy(animal_params)
+        animal = Animal.find(params[:id])
+        if animal.destroy 
+            render json: animal
+        else
+            render json:animal.errors
+        end
+    end
 
     private 
     def animal_params
