@@ -14,6 +14,12 @@ class AnimalsController < ApplicationController
         end
     end
 
+    def show
+        animal= Animal.find(params[:id])
+        animal_sightings = animal.as_json(include: :sightings)
+        render json: animal_sightings
+    end
+
     def create 
         animal = Animal.create(animal_params)
         if animal.valid?
